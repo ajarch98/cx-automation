@@ -3,8 +3,8 @@ from selenium import webdriver
 
 chromedriver_path=r'C:\Users\Advait Joshi\Documents\Python\automation\chromedriver.exe'
 website_path=r'https://cx.usiu.ac.ke/ICS/'
-username=r'ajoshi@usiu.ac.ke'
-password=r'646270.ab'
+username=r'uname@usiu.ac.ke' #enter your username here
+password=r'*********' #enter your passsword here
 
 driver=webdriver.Chrome(chromedriver_path)
 driver.get(website_path)
