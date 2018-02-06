@@ -1,6 +1,7 @@
 import time
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
+import smtplib
 
 def exam_results_checker_chrome():
     chromedriver_path=r'C:\Users\Advait Joshi\Documents\Python\automation\chromedriver.exe'
@@ -37,6 +38,13 @@ def exam_results_checker_chrome():
 
     time.sleep(5)
     driver.quit()
+
+def main():
+    print("What would you like to do?")
+    print("1. Open webbrowser to grades page")
+    print("2. Open screenshot of grades page")
+    print("3. Send yourself a screenshot of your grades page")
+
 
 if __name__ == '__main__':
     exam_results_checker_chrome()
