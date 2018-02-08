@@ -68,6 +68,7 @@ def send_screenshot_to_email():
 
     driver.save_screenshot("grades.png")
 
+
 def main():
     """Main function"""
     print("What would you like to do?")
