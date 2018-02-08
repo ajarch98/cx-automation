@@ -1,8 +1,7 @@
-# TODO: verify take screenshot function
-
 import time
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
+import os
 import smtplib
 
 #function declarations begin
@@ -14,8 +13,8 @@ def open_grades_page_chrome():
     """
     chromedriver_path=r'C:\Users\Advait Joshi\Documents\Python\automation\chromedriver.exe'#enter path to chromedriver.exe
     website_path=r'https://cx.usiu.ac.ke/ICS/'#enter website URL
-    username=r'ajoshi@usiu.ac.ke' #enter your username here
-    password=r'646270.ab' #enter your passsword here
+    username=r'uname@usiu.ac.ke' #enter your username here
+    password=r'******' #enter your passsword here
 
     driver=webdriver.Chrome(chromedriver_path)#open chromedriver
     driver.get(website_path)#open website
@@ -58,11 +57,16 @@ def take_grades_screenshot():
     """Take screenshot of grades"""
     driver=open_grades_page_chrome()
 
-    driver.take_screenshot("grades.png")#take screenshot
-    with open("grades.png") as screenshot:#open screenshot
-        screenshot.open()
+    driver.save_screenshot("grades.png")#take screenshot
+    os.startfile('grades.png')#open screenshot
 
     driver.quit()#close driver
+
+def send_screenshot_to_email():
+    "Take screenshot and send it to email"
+    driver=open_grades_page_chrome()
+
+    driver.save_screenshot("grades.png")
 
 def main():
     """Main function"""
