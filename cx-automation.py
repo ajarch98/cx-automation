@@ -3,6 +3,9 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import os
 import smtplib
+from email.mime.text import MIMEText
+from email.mime.image import MIMEImage
+from email.mime.multipart import MIMEMultipart
 
 #function declarations begin
 def open_grades_page_chrome():
@@ -65,9 +68,24 @@ def take_grades_screenshot():
 def send_screenshot_to_email():
     "Take screenshot and send it to email"
     driver=open_grades_page_chrome()
+    driver.save_screenshot("grades.png") #take and save screenshot
+    driver.quit() #close driver
 
-    driver.save_screenshot("grades.png")
+    msg=MIMEMultipart() #instantiate MIMEMultipart object
+    msg['Subject']='loltest' #define subject
+    msg['From']='AJ4Skrill@gmail.com' #define From
+    msg['To']='advaitjoshi1998@gmail.com' #define to
 
+    f=open('grades.png','rb') #open grades screenshot
+    img=MIMEImage(f.read()) #instantiate MIMEImage object
+    f.close() #close file object
+    msg.attach(img) #attach MIMEImage to MIMEMultipart object
+
+    s=smtplib.SMTP('smtp.gmail.com',587)#connect to server
+    s.ehlo()
+    s.starttls()
+    s.login('AJ4Skrill@gmail.com','blahblahblah123')#login to email
+    s.sendmail('AJ4Skrill@gmail.com', 'advaitjoshi1998@gmail.com', msg.as_string())#send email
 
 def main():
     """Main function"""
@@ -82,8 +100,9 @@ def main():
         check_exam_results_chrome()
     elif choice==2:
         take_grades_screenshot()
-    else:
-        pass
+    elif choice==3:
+        send_screenshot_to_email()
+        print('Email sent')
 
 
 if __name__ == '__main__':
