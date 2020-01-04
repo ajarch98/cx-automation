@@ -66,7 +66,7 @@ def take_grades_screenshot():
     driver.quit()#close driver
 
 def send_screenshot_to_email():
-    "Take screenshot and send it to email"
+    """Take screenshot and send it to email"""
     driver=open_grades_page_chrome()
     driver.save_screenshot("grades.png") #take and save screenshot
     driver.quit() #close driver
@@ -84,7 +84,7 @@ def send_screenshot_to_email():
     s=smtplib.SMTP('smtp.gmail.com',587)#connect to server
     s.ehlo()
     s.starttls()
-    s.login('AJ4Skrill@gmail.com','blahblahblah123')#login to email
+    s.login('AJ4Skrill@gmail.com','yourpasswordhere')#login to email
     s.sendmail('AJ4Skrill@gmail.com', 'advaitjoshi1998@gmail.com', msg.as_string())#send email
 
 def main():
