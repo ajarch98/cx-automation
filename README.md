@@ -3,6 +3,8 @@ Automate common CX tasks
 
 This code can be used to automate common tasks on CX. For now, you can:
 1. View the latest released grades
+2. Take a screenshot of latest released grades
+3. Send the screenshot of these grades to an email address
   
 # What do I need?
 1. Python 3.7 (download from https://www.python.org/downloads/)
